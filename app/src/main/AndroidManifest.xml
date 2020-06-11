@@ -15,7 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Photo2Activity"></activity>
+        <activity
+            android:name=".Photo3Activity"
+            android:label="@string/title_activity_photo3"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Photo2Activity" />
         <activity android:name=".Photo1Activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -32,7 +36,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 
