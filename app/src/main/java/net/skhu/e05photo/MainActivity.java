@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button3:
                 classObj = Photo3Activity.class;
                 break;
+            case R.id.button4:
+                classObj = Photo4Activity.class;
+                break;
         }
 
         Intent intent = new Intent(this, classObj);
