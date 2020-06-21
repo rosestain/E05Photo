@@ -66,7 +66,16 @@ public class Photo4Activity extends AppCompatActivity {
             backPressedCallback.setEnabled(true);
         };
 
-        adapter = new FileRecyclerView3Adapter(this, files, clickListener);
+        OnFileShareListener shareListener = (index, file) -> {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SEND);
+            Uri uri = FileProvider.getUriForFile(this, AUTHORITIES, file);
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            intent.setType("image/jpeg");
+            startActivity(Intent.createChooser(intent, "사진 공유"));
+        };
+
+        adapter = new FileRecyclerView3Adapter(this, files, clickListener, shareListener);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
@@ -83,6 +92,7 @@ public class Photo4Activity extends AppCompatActivity {
 
     static final int RC_TAKE_PHOTO = 1;
     File cameraFile;
+    static final String AUTHORITIES = "net.skhu.e05photo.fileProvider";
 
     private void startActivity_takePhoto()
     {
